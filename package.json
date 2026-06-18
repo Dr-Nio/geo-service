@@ -1,0 +1,50 @@
+{
+	"name": "@Dr-Nio/geo-service",
+	"version": "1.0.0",
+	"description": "Fully dynamic currency geolocation service with zero hard-coded values",
+	"main": "src/index.js",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js",
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"src",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"test": "echo \"No tests specified\" && exit 0"
+	},
+	"keywords": [
+		"geolocation",
+		"ip",
+    "address",
+		"country",
+		"currency",
+		"locale",
+		"dynamic",
+		"browser",
+		"intl",
+		"zero-hardcode",
+    "rate",
+    "money",
+    "seo",
+    "dollar",
+    "pounds",
+    "euro"
+	],
+	"author": "Nicholas Oscar Okechukwu",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Dr-Nio/geo-service"
+	},
+	"bugs": {
+		"url": "https://github.com/Dr-Nio/geo-service/issues"
+	},
+	"homepage": "https://github.com/Dr-Nio/geo-service#readme",
+	"engines": {
+		"node": ">=14.0.0"
+	}
+}
