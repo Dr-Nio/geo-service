@@ -1,5 +1,5 @@
 {
-	"name": "@Dr-Nio/geo-service",
+	"name": "@dr-nio/geo-service",
 	"version": "1.0.0",
 	"description": "Fully dynamic currency geolocation service with zero hard-coded values",
 	"main": "src/index.js",
@@ -19,7 +19,7 @@
 	"keywords": [
 		"geolocation",
 		"ip",
-    "address",
+		"address",
 		"country",
 		"currency",
 		"locale",
@@ -27,12 +27,12 @@
 		"browser",
 		"intl",
 		"zero-hardcode",
-    "rate",
-    "money",
-    "seo",
-    "dollar",
-    "pounds",
-    "euro"
+		"rate",
+		"money",
+		"seo",
+		"dollar",
+		"pounds",
+		"euro"
 	],
 	"author": "Nicholas Oscar Okechukwu",
 	"license": "MIT",
