@@ -1,19 +1,29 @@
 {
 	"name": "@dr-nio/geo-service",
-	"version": "1.1.1",
+	"version": "2.1.0",
 	"description": "Fully dynamic currency geolocation service with zero hard-coded values",
-	"main": "src/index.js",
-	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"browser": "dist/index.browser.js",
+	"types": "src/index.d.ts",
 	"exports": {
-		".": "./src/index.js",
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js",
+			"browser": "./dist/index.browser.js",
+			"default": "./dist/index.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"files": [
+		"dist",
 		"src",
 		"README.md",
 		"LICENSE"
 	],
 	"scripts": {
+		"build": "node build.js",
+		"prepublishOnly": "npm run build",
 		"test": "echo \"No tests specified\" && exit 0"
 	},
 	"keywords": [
@@ -46,5 +56,8 @@
 	"homepage": "https://github.com/Dr-Nio/geo-service#readme",
 	"engines": {
 		"node": ">=14.0.0"
+	},
+	"devDependencies": {
+		"esbuild": "^0.28.1"
 	}
 }

@@ -13,13 +13,15 @@ A fully dynamic geolocation service with zero hard-coded values. Automatically d
 ## Installation
 
 ```bash
-npm install @Dr-Nio/geo-service
+npm install @dr-nio/geo-service
+
+```
 
 ## Quick Start
 
 ```bash
 
-import FullyDynamicGeolocationService from '@Dr-Nio/geo-service';
+import FullyDynamicGeolocationService from '@dr-nio/geo-service';
 
 // Create instance
 const geolocation = new FullyDynamicGeolocationService();
@@ -48,7 +50,7 @@ service.displayLocationInfo(location);
 ```bash
 
 <script type="module">
-import FullyDynamicGeolocationService from './node_modules/@Dr-Nio/geo-service/src/index.js';
+import FullyDynamicGeolocationService from './node_modules/@dr-nio/geo-service/src/index.js';
 
 const service = new FullyDynamicGeolocationService();
 const location = await service.getUserLocation();
