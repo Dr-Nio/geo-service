@@ -1,7 +1,7 @@
 {
 	"name": "@dr-nio/geo-service",
-	"version": "2.3.0",
-	"description": "Fully dynamic currency geolocation service with zero hard-coded values",
+	"version": "3.0.1",
+	"description": "Zero-hardcode geolocation & currency service with dynamic API discovery, real-time conversion, and Intl-based localization",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"browser": "dist/index.browser.js",

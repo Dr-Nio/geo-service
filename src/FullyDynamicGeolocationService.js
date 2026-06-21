@@ -1,3 +1,5 @@
+import CurrencyConverter from './CurrencyConverter.js';
+
 class FullyDynamicGeolocationService {
     constructor() {
         // No hard-coded URLs - we'll discover them dynamically
@@ -12,6 +14,9 @@ class FullyDynamicGeolocationService {
         
         // Get browser capabilities dynamically
         this.browserCapabilities = this.detectBrowserCapabilities();
+        
+        // Initialize currency converter with reference to this service
+        this.currencyConverter = new CurrencyConverter(this);
     }
 
     /**
@@ -773,6 +778,133 @@ class FullyDynamicGeolocationService {
                 console.log(`  ${amount.toString().padStart(6)} → ${formatter.format(amount)}`);
             } catch {}
         }
+    }
+
+    // ============================================
+    // CURRENCY CONVERSION METHODS
+    // ============================================
+
+    /**
+     * Convert currency using the integrated converter
+     * @param {number} amount - Amount to convert
+     * @param {string} fromCurrency - Source currency code (e.g., 'USD')
+     * @param {string} toCurrency - Target currency code (e.g., 'EUR')
+     * @param {Object} options - Conversion options
+     * @param {number} options.timeout - Request timeout in milliseconds
+     * @param {number} options.cacheDuration - Cache duration in milliseconds
+     * @returns {Promise<Object>} Conversion result
+     */
+    async convertCurrency(amount, fromCurrency, toCurrency, options = {}) {
+        return await this.currencyConverter.convert(amount, fromCurrency, toCurrency, options);
+    }
+
+    /**
+     * Get exchange rate between two currencies
+     * @param {string} fromCurrency - Source currency code
+     * @param {string} toCurrency - Target currency code
+     * @param {Object} options - Options for rate retrieval
+     * @returns {Promise<number>} Exchange rate
+     */
+    async getExchangeRate(fromCurrency, toCurrency, options = {}) {
+        return await this.currencyConverter.getExchangeRate(fromCurrency, toCurrency, options);
+    }
+
+    /**
+     * Get all available currencies
+     * @returns {Promise<Array>} Array of currency codes
+     */
+    async getAvailableCurrencies() {
+        return await this.currencyConverter.getAvailableCurrencies();
+    }
+
+    /**
+     * Format currency amount with proper symbol and formatting
+     * @param {number} amount - Amount to format
+     * @param {string} currencyCode - Currency code
+     * @param {string} locale - Locale for formatting
+     * @returns {Promise<string>} Formatted currency string
+     */
+    async formatCurrency(amount, currencyCode, locale = null) {
+        return await this.currencyConverter.formatCurrency(amount, currencyCode, locale);
+    }
+
+    /**
+     * Convert amount to multiple currencies
+     * @param {number} amount - Amount to convert
+     * @param {string} fromCurrency - Source currency code
+     * @param {Array} targetCurrencies - Array of target currency codes
+     * @param {Object} options - Conversion options
+     * @returns {Promise<Object>} Conversion results
+     */
+    async convertToMultiple(amount, fromCurrency, targetCurrencies, options = {}) {
+        return await this.currencyConverter.convertToMultiple(amount, fromCurrency, targetCurrencies, options);
+    }
+
+    /**
+     * Get exchange rates for multiple currencies
+     * @param {string} baseCurrency - Base currency code
+     * @param {Array} targetCurrencies - Array of target currency codes
+     * @param {Object} options - Options for rate retrieval
+     * @returns {Promise<Object>} Exchange rates
+     */
+    async getMultipleRates(baseCurrency, targetCurrencies, options = {}) {
+        return await this.currencyConverter.getMultipleRates(baseCurrency, targetCurrencies, options);
+    }
+
+    /**
+     * Display currency conversion result
+     * @param {Object} result - Conversion result from convertCurrency()
+     * @returns {Object} The currency converter instance for chaining
+     */
+    displayConversion(result) {
+        return this.currencyConverter.displayConversion(result);
+    }
+
+    /**
+     * Display multiple currency conversions
+     * @param {Object} results - Results from convertToMultiple()
+     * @returns {Object} The currency converter instance for chaining
+     */
+    displayMultipleConversions(results) {
+        return this.currencyConverter.displayMultipleConversions(results);
+    }
+
+    /**
+     * Get currency information including symbol and name
+     * @param {string} currencyCode - Currency code
+     * @param {string} locale - Locale for formatting
+     * @returns {Promise<Object>} Currency information
+     */
+    async getCurrencyInfo(currencyCode, locale = null) {
+        return await this.currencyConverter.getCurrencyInfo(currencyCode, locale);
+    }
+
+    /**
+     * Get historical exchange rate for a specific date
+     * @param {string} fromCurrency - Source currency code
+     * @param {string} toCurrency - Target currency code
+     * @param {string} date - Date in YYYY-MM-DD format
+     * @param {Object} options - Options for rate retrieval
+     * @returns {Promise<Object>} Historical rate information
+     */
+    async getHistoricalRate(fromCurrency, toCurrency, date, options = {}) {
+        return await this.currencyConverter.getHistoricalRate(fromCurrency, toCurrency, date, options);
+    }
+
+    /**
+     * Clear all caches (location and currency)
+     */
+    clearAllCaches() {
+        this.cache.clear();
+        this.currencyConverter.clearCache();
+    }
+
+    /**
+     * Get currency converter cache statistics
+     * @returns {Object} Cache statistics
+     */
+    getCurrencyCacheStats() {
+        return this.currencyConverter.getCacheStats();
     }
 }
 
