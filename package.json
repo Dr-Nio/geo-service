@@ -1,6 +1,6 @@
 {
 	"name": "@dr-nio/geo-service",
-	"version": "3.0.2",
+	"version": "3.1.0",
 	"description": "Zero-hardcode geolocation & currency service with dynamic API discovery, real-time conversion, and Intl-based localization",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -23,8 +23,14 @@
 	],
 	"scripts": {
 		"build": "node build.js",
+		"build:cjs": "node build.cjs.js",
+		"build:esm": "node build.esm.js",
+		"build:browser": "node build.browser.js",
 		"prepublishOnly": "npm run build",
-		"test": "echo \"No tests specified\" && exit 0"
+		"test": "node test-simple.js",
+		"example": "node example.js",
+		"clean": "rm -rf dist",
+		"prebuild": "npm run clean"
 	},
 	"keywords": [
 		"geolocation",
@@ -32,6 +38,8 @@
 		"address",
 		"country",
 		"currency",
+		"conversion",
+		"exchange-rate",
 		"locale",
 		"dynamic",
 		"browser",
@@ -42,7 +50,11 @@
 		"seo",
 		"dollar",
 		"pounds",
-		"euro"
+		"euro",
+		"forex",
+		"finance",
+		"localization",
+		"i18n"
 	],
 	"author": "Nicholas Oscar Okechukwu",
 	"license": "MIT",
