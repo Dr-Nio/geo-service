@@ -1,9 +1,4 @@
-Here's the updated README.md with the currency conversion features added:
-
-## **README.md** (Updated)
-
-```markdown
-# Dynamic Geolocation & Currency Service
+## Dynamic Geolocation & Currency Service
 
 A fully dynamic geolocation and currency service with zero hard-coded values. Automatically discovers and uses the best available APIs for geolocation, currency conversion, exchange rates, and country data.
 
@@ -248,7 +243,7 @@ If you find a bug or have a suggestion, please open an issue on GitHub.
 - Historical rate lookup
 - Smart caching
 - Intl-based formatting
-```
+
 
 ## Key Updates Made:
 
