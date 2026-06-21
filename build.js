@@ -28,6 +28,10 @@ async function build() {
     console.log('📦 Building Browser version...');
     await execAsync('node build.browser.js');
 
+    // Build TypeScript declarations
+    console.log('📦 Building TypeScript declarations...');
+    await execAsync('node build.types.js');
+
     // Copy source files to dist for direct imports (optional)
     console.log('📦 Copying source files...');
     const srcFiles = [
@@ -50,6 +54,7 @@ async function build() {
     console.log('   - index.js (CommonJS)');
     console.log('   - index.mjs (ES Module)');
     console.log('   - index.browser.js (Browser)');
+    console.log('   - index.d.ts (TypeScript declarations)');
     console.log('   - FullyDynamicGeolocationService.js');
     console.log('   - CurrencyConverter.js');
     console.log('   - index.js (source copy)');

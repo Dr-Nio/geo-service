@@ -1,13 +1,14 @@
 {
 	"name": "@dr-nio/geo-service",
-	"version": "3.1.0",
+	"version": "3.2.1",
 	"description": "Zero-hardcode geolocation & currency service with dynamic API discovery, real-time conversion, and Intl-based localization",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"browser": "dist/index.browser.js",
-	"types": "src/index.d.ts",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.js",
 			"browser": "./dist/index.browser.js",
@@ -26,6 +27,7 @@
 		"build:cjs": "node build.cjs.js",
 		"build:esm": "node build.esm.js",
 		"build:browser": "node build.browser.js",
+		"build:types": "node build.types.js",
 		"prepublishOnly": "npm run build",
 		"test": "node test-simple.js",
 		"example": "node example.js",

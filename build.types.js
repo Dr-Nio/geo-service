@@ -1,4 +1,43 @@
-// TypeScript definitions for @dr-nio/geo-service
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+console.log('📦 Building TypeScript declarations...');
+
+// Ensure dist directory exists
+const distDir = path.join(__dirname, 'dist');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
+}
+
+// Copy TypeScript declarations to dist
+const srcTypesPath = path.join(__dirname, 'src', 'index.d.ts');
+const distTypesPath = path.join(distDir, 'index.d.ts');
+
+if (fs.existsSync(srcTypesPath)) {
+  let content = fs.readFileSync(srcTypesPath, 'utf8');
+  
+  // Update the module declaration to match the package
+  content = content.replace(
+    /declare module ['"][^'"]+['"]/,
+    `declare module '@dr-nio/geo-service'`
+  );
+  
+  fs.writeFileSync(distTypesPath, content);
+  console.log('✅ TypeScript declarations copied to dist/index.d.ts');
+} else {
+  console.warn('⚠️  TypeScript declarations file not found: src/index.d.ts');
+}
+
+// Also copy to src/index.d.ts if it doesn't exist
+const srcTypesPathCheck = path.join(__dirname, 'src', 'index.d.ts');
+if (!fs.existsSync(srcTypesPathCheck)) {
+  console.log('📝 Creating TypeScript declarations file...');
+  
+  const typesContent = `// TypeScript definitions for @dr-nio/geo-service
 
 export interface LocationData {
   location: string | null;
@@ -164,8 +203,13 @@ export declare class FullyDynamicGeolocationService {
 
 export default FullyDynamicGeolocationService;
 
-// Module declaration for TypeScript
+// Declare module for TypeScript
 declare module '@dr-nio/geo-service' {
   export = FullyDynamicGeolocationService;
   export default FullyDynamicGeolocationService;
+}`;
+
+  fs.writeFileSync(srcTypesPathCheck, typesContent);
+  fs.writeFileSync(distTypesPath, typesContent);
+  console.log('✅ TypeScript declarations created at src/index.d.ts and dist/index.d.ts');
 }
